@@ -4,10 +4,12 @@ public typealias Callback = @convention(c) (UnsafePointer<CChar>?) -> Void
 
 @_cdecl("register_for_changes")
 public func registerForChanges(_ callback: @escaping Callback) {
+    print("Started...")
     let arg = "arg"
     arg.withCString { (cstr) in
         callback(cstr)
     }
+    print("Finished.")
 }
 
 @_cdecl("swift_fibonacci")

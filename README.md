@@ -6,16 +6,10 @@ To run the non-working case from `non-working-interop/`, you need to first build
 swift build --package-path ./src/CallbackExample
 ```
 
-To build the interop code, run:
+To build the calling C++ code, run:
 
 ```
-yarn install
+g++ src/small.cpp -std=c++11 -o test-interop
 ```
 
-Finally to run the Electron app, run:
-
-```
-yarn start
-```
-
-The logs indicating that the call to fibonacci work and that the callback seems to fail will show up in the Terminal rather than in the Electron JS console.
+Then run `test-interop`. The logs indicate that there is a segfault.
